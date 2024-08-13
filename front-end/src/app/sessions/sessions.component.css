@@ -1,0 +1,24 @@
+.example-viewport {
+    height: 15em;
+    width: 100% ;
+    border: 1px solid black;
+  }
+  
+  .example-item {
+    height: 50px;
+  }
+
+  .table{
+    width: 100%;
+  }
+
+  .tr{
+    /* border-bottom: 1px solid blue; */
+    height: 10px;
+  }
+
+  .example-viewport2{
+    height: 2em;
+    width: 10em ;
+    border: 1px solid black;
+  }

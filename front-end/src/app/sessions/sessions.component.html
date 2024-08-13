@@ -1,0 +1,116 @@
+<h3 class="m-5">Gestion des Sessions</h3>
+<div class="row">
+  <div class="gap-3 mb-3">
+    <div><span class="badge bg-info text-dark">Liste des Sessions</span></div>
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+      <mat-table class="" [dataSource]="dataSource">
+        <input type="hidden" *matCellDef="let user;" value={{user.id}}>
+        <ng-container matColumnDef="nomSession">
+          <mat-header-cell *matHeaderCellDef>nom session</mat-header-cell>
+          <mat-cell *matCellDef="let user;">{{user.nomSession}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="annee">
+          <mat-header-cell *matHeaderCellDef>année</mat-header-cell>
+          <mat-cell class="description-cell" *matCellDef="let user">{{user.annee}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="dateDebut">
+          <mat-header-cell *matHeaderCellDef>date début</mat-header-cell>
+          <mat-cell class="duration-cell" *matCellDef="let user">{{user.dateOuverture}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dateFin">
+          <mat-header-cell *matHeaderCellDef>date fin</mat-header-cell>
+          <mat-cell class="duration-cell" *matCellDef="let user">{{user.dateFermeture}}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="capacite">
+          <mat-header-cell *matHeaderCellDef>Capacité</mat-header-cell>
+          <mat-cell class="duration-cell" *matCellDef="let user">{{user.capacite}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>
+
+      </mat-table>
+
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+  <div class="col-md-12 justify-content-md-right">
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-3">
+      <button (click)="showAddSession()" type="button" class="btn btn-primary">Ajouter session</button>
+    </div>
+  </div>
+
+
+  <div *ngIf="buttonAction">
+
+    <h2 class="text-center">Ajouter Session</h2>
+    <form class="form-horizontal">
+      <div class="col-sm-6 col-md-12">
+        <div class="form-group col-md-6 ">
+          <input type="hidden" name="id"  [formControl]="id">
+          <label class="control-label col-sm-4">L'année de session</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="sessionYear" [formControl]="sessionYear" id="sessionYear">
+          </div>
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label class="control-label col-sm-4">Nom de session</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" [formControl]="sessionName" id="sessionName">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">capacité</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" [formControl]="sessionCapacity" id="sessionCapacity">
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Date Début de session</label>
+          <div class="col-sm-8">
+            <input type="text" class="date-start ml-5 form-control datepicker" placeholder="Date Start"
+              [formControl]="sessionStartDate" id="sessionStartDate">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Date fin de session</label>
+          <div class="col-sm-8">
+            <input type="text" class="date-end ml-5 form-control datepicker col-sm-8" placeholder="Date End"
+              [formControl]="sessionEndDate" id="sessionEndDate">
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary"
+          [innerText]="buttonAction == 'add' ? 'Ajouter' : 'modifier'"
+          (click)="buttonAction == 'add' ? addSession() : updateSession()"></button>
+        <button class="btn btn-danger" (click)="deleteSession()"> supprimer </button>
+      </div>
+      <input type="hidden" name="action" id="action" value="event_dialog_add_newpartnerdata" />
+    </form>
+  </div>

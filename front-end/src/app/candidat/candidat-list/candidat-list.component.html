@@ -1,0 +1,68 @@
+<div class="row m-3">
+    <div class="gap-3 m-3">
+        <div class="h4"><span class="badge bg-info text-dark">Liste des candidats</span></div>
+        <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+            <mat-table class="" [dataSource]="dataSource">
+                <ng-container matColumnDef="Nom prenom">
+                    <th mat-header-cell *matHeaderCellDef> Nom et Prenom </th>
+                    <td mat-cell *matCellDef="let user"> {{user.nomPrenom}} </td>
+                  </ng-container>
+                <ng-container matColumnDef="Num CIN">
+                    <th mat-header-cell *matHeaderCellDef> Numero CIN </th>
+                    <td mat-cell *matCellDef="let user" >{{user.numCIN}}</td>
+                  </ng-container>
+                <ng-container matColumnDef="date naissance">
+                    <th mat-header-cell *matHeaderCellDef> date de naissance </th>
+                    <td mat-cell *matCellDef="let user">{{user.dateNaissance | date}}</td>
+                  </ng-container>
+                <ng-container matColumnDef="Nom pere">
+                    <th mat-header-cell *matHeaderCellDef> Nom du pere </th>
+                    <td mat-cell *matCellDef="let user">{{user.nomPere}}</td>
+                  </ng-container>
+                <ng-container matColumnDef="Prenom pere">
+                    <th mat-header-cell *matHeaderCellDef> Prenom du pere </th>
+                    <td mat-cell *matCellDef="let user"> {{user.prenomPere}} </td>
+                  </ng-container>
+                <ng-container matColumnDef="Num Tel">
+                    <th mat-header-cell *matHeaderCellDef> numero tel </th>
+                    <td mat-cell *matCellDef="let user">{{user.numTel}}</td>
+                  </ng-container>
+                <ng-container matColumnDef="Adresse">
+                    <th mat-header-cell *matHeaderCellDef> Adresse</th>
+                    <td mat-cell *matCellDef="let user"> {{user.Adress}} </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let myRowData; columns: displayedColumns" (click)="onRowClicked(myRowData)"></tr>
+
+            </mat-table>
+
+        </cdk-virtual-scroll-viewport>
+
+        <div *ngIf="rowClicked" class="row m-5">
+<!-- 
+            <ul class="list-group col-md-12">
+                <li class="list-group-item col-md-6"> {{candidat.nomPrenom}} </li>
+                <li class="list-group-item col-md-6">{{candidat.numCIN}}</li>
+            </ul> -->
+            <ul class="list-group col-md-6">
+                <small>NOM</small>
+                <li class="list-group-item "> {{candidat.nomPrenom}} </li>
+                <small>prénom</small>
+                <li class="list-group-item ">{{candidat.dateNaissance | date}}</li>
+            </ul>
+            <ul class="list-group col-md-6">  
+                <small>nméro tel</small>
+                <li class="list-group-item  "> {{candidat.numTel}} </li>
+                <small>numero CIN</small>
+                <li class="list-group-item ">{{candidat.numCIN}}</li>
+            </ul>
+            <button type="submit" class="btn btn-primary col-md-2 m-3" (click)="valider()">Valider</button>
+            <button type="submit" class="btn btn-danger col-md-3 m-3" (click)="onDelete()">supprimer</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<router-outlet></router-outlet>

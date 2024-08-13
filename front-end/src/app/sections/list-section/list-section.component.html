@@ -1,0 +1,103 @@
+<div class="row m-3">
+  <div class="gap-3 m-3">
+    <div class="h4"><span class="badge bg-info text-dark">Liste des sections</span></div>
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+      <mat-table class="" [dataSource]="dataSource">
+        <ng-container matColumnDef="code section">
+          <th mat-header-cell *matHeaderCellDef>code section</th>
+          <td mat-cell *matCellDef="let user"> {{user.codeSection}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Code Specialite">
+          <th mat-header-cell *matHeaderCellDef>code spécalite</th>
+          <td mat-cell *matCellDef="let user">{{user.codeSpecialite}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Nom Section">
+          <th mat-header-cell *matHeaderCellDef>nom section</th>
+          <td mat-cell *matCellDef="let user">{{user.nomSection}}</td>
+        </ng-container>
+        <ng-container matColumnDef="nombre Group">
+          <th mat-header-cell *matHeaderCellDef>nombre de groupes</th>
+          <td mat-cell *matCellDef="let user">{{user.nombreGroup}}</td>
+        </ng-container>
+        <ng-container matColumnDef="capacite Apprenant">
+          <th mat-header-cell *matHeaderCellDef>capacité en apprenant</th>
+          <td mat-cell *matCellDef="let user"> {{user.capaciteApprenant}} </td>
+        </ng-container>
+        <ng-container matColumnDef="codeDiplome">
+          <th mat-header-cell *matHeaderCellDef>Code diplome</th>
+          <td mat-cell *matCellDef="let user">{{user.codeDiplome }}</td>
+        </ng-container>
+        <ng-container matColumnDef="dateEntree">
+          <th mat-header-cell *matHeaderCellDef> Date entréé</th>
+          <td mat-cell *matCellDef="let user"> {{user.dateEntree}} </td>
+        </ng-container>
+        <ng-container matColumnDef="dateFin">
+          <th mat-header-cell *matHeaderCellDef>Date fin</th>
+          <td mat-cell *matCellDef="let user"> {{user.dateFin}} </td>
+        </ng-container>
+        <ng-container matColumnDef="session">
+          <th mat-header-cell *matHeaderCellDef>Session</th>
+          <td mat-cell *matCellDef="let user"> {{user.session}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: displayedColumns" (click)="onRowClicked(myRowData)"></tr>
+
+      </mat-table>
+
+    </cdk-virtual-scroll-viewport>
+
+    <div *ngIf="rowClicked" class="row m-5">
+
+      <ul class="list-group col-md-6">
+        <small>Code section</small>
+        <li class="list-group-item "> <input type="text" value={{section.codeSection}}
+            [(ngModel)]="section.codeSection"> </li>
+        <small>Nom section</small>
+        <li class="list-group-item "><input type="text" value={{section.nomSection}} [(ngModel)]="section.nomSection">
+        </li>
+      </ul>
+
+      <ul class="list-group col-md-6">
+        <small>Code diplome</small>
+        <li class="list-group-item "><input type="text" value={{section.codeDiplome}} [(ngModel)]="section.codeDiplome">
+        </li>
+        <small>Code spécialité</small>
+        <li class="list-group-item"><input type="text" value={{section.codeSpecialite}}
+            [(ngModel)]="section.codeSpecialite"></li>
+      </ul>
+
+      <ul class="list-group col-md-6">
+        <small>nombre de groupes</small>
+        <li class="list-group-item  "><input type="text" value={{section.nombreGroup}}
+            [(ngModel)]="section.nombreGroup"> </li>
+        <small>numero CIN</small>
+        <li class="list-group-item "><input type="text" value={{section.capaciteApprenant}}
+            [(ngModel)]="section.capaciteApprenant"></li>
+      </ul>
+
+
+      <ul class="list-group col-md-6">
+        <small>date début</small>
+        <li class="list-group-item  "> <input type="text" value={{section.dateEntree}} [(ngModel)]="section.dateEntree">
+        </li>
+        <small>date fin</small>
+        <li class="list-group-item "> <input type="text" value={{section.dateFin}} [(ngModel)]="section.dateFin"></li>
+      </ul>
+
+      <ul class="list-group col-md-6">
+        <small>date fin</small>
+        <li class="list-group-item "> <input type="text" value={{section.session.nomSession}} [(ngModel)]="section.session.nomSession"></li>
+      </ul>
+
+
+      <button type="submit" class="btn btn-primary col-md-2 m-3" (click)="onUpdate()">modifier</button>
+      <button type="submit" class="btn btn-danger col-md-2 m-3" (click)="onDelete()">supprimer</button>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<router-outlet></router-outlet>

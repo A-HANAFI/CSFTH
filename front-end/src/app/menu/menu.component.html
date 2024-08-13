@@ -1,0 +1,52 @@
+<div id="app" >
+  
+    <nav class="navbar navbar-expand-md navbar-light bg-light" style="position: fixed; top: 0;" fixedInViewport="true" style="position:sticky; top: 0">
+      <div class="container-fluid">
+      <a [routerLink]="['welcome']"  class="navbar-brand" >CSFTH
+        <img src="../../assets/331506555_1226492384649586_8528439409266164020_n.jpg" alt="" width="30" height="24">
+      </a>
+      <!-- <ul class="navbar-nav mr-left" routerLinkActive="active">
+        <li class="nav-item">
+          <a href="/home" class="nav-link" routerLink="home">Home </a>
+        </li>
+      </ul> -->
+  <div style="text-align: right;float: right;">
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <button href="/register" class="btn btn-success" routerLink="register">Sign Up</button>
+        </li>
+        <li class="nav-item">
+          <button href="/login" class="btn btn-primary" routerLink="login">Login</button>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav d-flex" *ngIf="isLoggedIn">
+
+        <li *ngIf="switchRoles">
+          <div class="dropdown">
+            <button  class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Role
+            </button>
+            
+            <ul class="dropdown-menu" *ngFor="let role of roles">
+              
+              <li *ngFor="let role of roles" #role 
+              
+              ><a  class="dropdown-item" >{{role}}</a></li>
+            </ul>
+            <button class="btn btn-light"> {{role}}  </button>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+        </li>
+        <li class="nav-item" >
+          <a href class="nav-link"  (click)="logout()">LogOut</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+
+</div>

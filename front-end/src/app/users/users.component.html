@@ -1,0 +1,93 @@
+<h3 class="m-5">Gestion des utilisateurs</h3>
+<div class="row">
+  <div class="gap-3 mb-3">
+    <div><span class="badge bg-info text-dark">Liste des utilisateurs</span></div>
+  <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+    <mat-table class="" [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+        <mat-cell *matCellDef="let user;let i = index">{{i+1}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef>username</mat-header-cell>
+        <mat-cell class="description-cell" *matCellDef="let user">{{user.username}}</mat-cell>
+
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let user">{{user.email }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="roles">
+        <mat-header-cell *matHeaderCellDef>Roles</mat-header-cell>
+        <mat-cell class="duration-cell" *matCellDef="let user ">
+          <span *ngFor="let role of user.roles ">
+            <td>{{role.name}}</td>
+          </span>
+        </mat-cell>
+      </ng-container>
+
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+      <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>
+
+    </mat-table>
+
+  </cdk-virtual-scroll-viewport>
+</div>
+
+  <div class="col-md-3">
+    <button (click)="showAddUser()" type="button" class="btn btn-primary">Ajouter utilisateur</button>
+  </div>
+
+  <div class="col-md-7 justify-content-md-right">
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+  <button [hidden]="true" class="btn btn-success" (click)="getUsers()" #getusers
+    [ngStyle]=" {'background-color' : isclicked === true ? 'red' : 'green'} ">
+    all users
+  </button>
+
+
+  <div *ngIf="buttonAction">
+
+    <form class="row gap-3">
+      <div class="col-md-6">
+        <input type="hidden" name="id"  [formControl]="id">
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" [formControl]="email" id="Email" required>
+
+        <label for="username" class="form-label">user name</label>
+        <input type="text" name="username" class="form-control" id="username" [formControl]="username" required>
+
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="password" [formControl]="password">
+      </div>
+      <div class="col-md-2">
+        <span>Roles</span>
+        <div class="form-check" *ngFor="let d of rolesSelect">
+          <input class="form-check-input" name={{d.role}} type="checkbox" [checked]="d.checked"
+            (change)="d.checked = !d.checked" value="" id={{d.role}}>
+
+          <label class="form-check-label" for={{d.role}}>
+            {{d.role}}
+          </label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid"
+          [innerText]="buttonAction == 'add' ? 'Ajouter' : 'modifier'"
+          (click)="buttonAction == 'add' ? addUser() : updateUser(id.value)"></button>
+        <button class="btn btn-danger" (click)="deleteUser()"> delete </button>
+      </div>
+    </form>
+  </div>
+</div>

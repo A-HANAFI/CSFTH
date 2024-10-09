@@ -9,9 +9,9 @@ import {
  */
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../models/User';
+import { User } from '../_models/User';
 import { UserService } from '../_services/user.service';
-import { Session } from '../models/Session';
+import { Session } from '../_models/Session';
 import { SessionService } from '../_services/session.service';
 
 const PAGESIZE = 20;

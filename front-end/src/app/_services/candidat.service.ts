@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Candidat } from '../models/Candidat';
+import { Candidat } from '../_models/Candidat';
 import{API_URL} from '../_shared/constants';
 
 

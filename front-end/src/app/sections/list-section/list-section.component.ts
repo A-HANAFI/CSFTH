@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SectionService } from 'src/app/_services/section.service';
-import { Section } from 'src/app/models/Section';
+import { Section } from 'src/app/_models/Section';
 import { SectionsDataSource } from '../SectionsDataSource';
 import { SessionService } from 'src/app/_services/session.service';
-import { Session } from 'src/app/models/Session';
+import { Session } from 'src/app/_models/Session';
 
 @Component({
   selector: 'app-list-section',

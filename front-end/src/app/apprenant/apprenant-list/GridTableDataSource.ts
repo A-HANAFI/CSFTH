@@ -1,7 +1,7 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { BehaviorSubject, Observable } from "rxjs";
 import { CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
-import { Apprenant } from "src/app/models/Apprenant";
+import { Apprenant } from "src/app/_models/Apprenant";
 import { ApprenantService } from "src/app/_services/apprenant.service";
 
 

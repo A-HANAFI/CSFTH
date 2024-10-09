@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
-import { Role } from '../models/Role';
-import { User } from '../models/User';
+import { Role } from '../_models/Role';
+import { User } from '../_models/User';
 import { StorageService } from '../_services/storage.service';
 
 export const TOKEN = 'token'

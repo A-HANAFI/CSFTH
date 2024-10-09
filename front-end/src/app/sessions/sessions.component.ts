@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Session } from '../models/Session';
+import { Session } from '../_models/Session';
 import { SessionService } from '../_services/session.service';
 import { CollectionViewer } from '@angular/cdk/collections';
 import { SessionsDataSource } from './SessionsDataSource';

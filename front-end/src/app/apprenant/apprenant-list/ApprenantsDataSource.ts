@@ -1,7 +1,7 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { BehaviorSubject, Observable, catchError, finalize, of } from "rxjs";
 import { ApprenantService } from "src/app/_services/apprenant.service";
-import { Apprenant } from "src/app/models/Apprenant";
+import { Apprenant } from "src/app/_models/Apprenant";
 
 
 export  class ApprenantsDataSource extends DataSource<Apprenant>{

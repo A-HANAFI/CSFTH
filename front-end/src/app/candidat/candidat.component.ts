@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Candidat } from '../models/Candidat';
+import { Candidat } from '../_models/Candidat';
 import { CandidatService } from '../_services/candidat.service';
 import { FormControl } from '@angular/forms';
 import { UsersDataSource } from '../users/UsersDataSource';
-import { User } from '../models/User';
+import { User } from '../_models/User';
 import { CandidatsDataSource } from './CandidatsDataSource';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { CandidatService } from 'src/app/_services/candidat.service';
-import { Candidat } from 'src/app/models/Candidat';
+import { Candidat } from 'src/app/_models/Candidat';
 
 @Component({
   selector: 'app-add-candidat',

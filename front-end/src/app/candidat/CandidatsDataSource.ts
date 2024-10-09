@@ -1,5 +1,5 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
-import { Candidat } from "../models/Candidat";
+import { Candidat } from "../_models/Candidat";
 import { BehaviorSubject, Observable, catchError, finalize, of } from "rxjs";
 import { CandidatService } from "../_services/candidat.service";
 

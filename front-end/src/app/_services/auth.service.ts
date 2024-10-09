@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { User } from '../models/User';
+import { User } from '../_models/User';
 import {API_URL} from '../_shared/constants';
 
 const URL = API_URL;
@@ -10,39 +10,50 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-export const TOKEN = 'token'
-export const AUTHENTICATED_USER = 'authenticatedUser'
-
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(username:string,password:string): Observable<any> {
+  private AUTHENTICATED_USER = new User();
+  private isLoggedIn? : boolean;
+  private roles? : string[];
+
+  login(username:string,password:string): Observable<any | string[]> {
     return this.http.post<any>(
       URL + 'auth/signin', {username,password}
     )
     .pipe(
       map(
         data => {
-          sessionStorage.setItem(AUTHENTICATED_USER, username);
-          sessionStorage.setItem(TOKEN,data.token);
+          this.AUTHENTICATED_USER.username = username;
+          this.isLoggedIn = true;
           return data;
         }
       )
     );
   }
 
-  
-  getAuthenticatedUser() {
-    return sessionStorage.getItem(AUTHENTICATED_USER)
+  getRoles(){
+    if(this.isLoggedIn){
+       this.login(this.AUTHENTICATED_USER.username,this.AUTHENTICATED_USER.password)
+       .subscribe(  (data) => {
+        this.roles = data.roles;
+       }
+      )
+    }else{
+      return null;
+    }
   }
+
   
-  getAuthenticatedToken() {
-    if (this.getAuthenticatedUser())
-      return sessionStorage.getItem('key')
-    return null
+  isUserLoggedIn(){
+    if(this.isLoggedIn){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   register(
@@ -59,13 +70,35 @@ export class AuthService {
         password,
         roles
       }
-      //user
       ,
       httpOptions
-    );
+    ).pipe(
+      map(
+        data=> {
+          this.AUTHENTICATED_USER.username = username;
+          this.isLoggedIn = true;
+          this.roles = roles;
+          return data;
+        }
+      )
+    )
+    
+    ;
   }
 
   logout(): Observable<any> {
-    return this.http.post(URL + 'signout', { }, httpOptions);
+    this.AUTHENTICATED_USER = null;
+    this.isLoggedIn = false;
+    return this.http.post(URL + 'signout', { }, httpOptions)
+    .pipe(
+      map(
+        data=>{
+          this.isLoggedIn = false;
+          this.AUTHENTICATED_USER = null;
+          return data;
+        }
+      )
+    );
+
   }
 }

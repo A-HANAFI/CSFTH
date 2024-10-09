@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SectionService } from 'src/app/_services/section.service';
 import { SessionService } from 'src/app/_services/session.service';
-import { Section } from 'src/app/models/Section';
-import { Session } from 'src/app/models/Session';
+import { Section } from 'src/app/_models/Section';
+import { Session } from 'src/app/_models/Session';
 
 @Component({
   selector: 'app-add-section',

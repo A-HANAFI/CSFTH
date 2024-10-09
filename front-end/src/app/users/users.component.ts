@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy,Component, OnInit, ViewChild, ElementRef, Chang
 import {ScrollingModule , CdkVirtualScrollViewport,
   FixedSizeVirtualScrollStrategy,
   VIRTUAL_SCROLL_STRATEGY } from '@angular/cdk/scrolling';
-import { User } from '../models/User';
+import { User } from '../_models/User';
 import { UserService } from '../_services/user.service';
 import { Observable } from 'rxjs';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { Role } from '../models/Role';
+import { Role } from '../_models/Role';
 import { AuthService } from '../_services/auth.service';
 import { CustomVirtualScrollStrategy } from './CustomVirtualScrollStrategy';
 import { UsersDataSource } from './UsersDataSource';

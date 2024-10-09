@@ -17,7 +17,7 @@ export class StorageService {
     sessionStorage.setItem('id', user.id);
     sessionStorage.setItem('username',user.username);
     sessionStorage.setItem('email',user.email);
-    sessionStorage.setItem('Token',user.accessToken);
+    // sessionStorage.setItem('Token',user.accessToken);
   }
 
   public getUser(): any {

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Session } from '../models/Session';
+import { Session } from '../_models/Session';
 import { Observable } from 'rxjs';
 import { API_URL } from '../_shared/constants';
 

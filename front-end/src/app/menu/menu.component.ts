@@ -30,8 +30,8 @@ export class MenuComponent {
 
   ngOnInit(): void {
 
-    this.isLoggedIn = this.storageService.isLoggedIn();
-    this.roles = this.storageService.getUser().roles;
+    this.isLoggedIn = this.authService.isUserLoggedIn();
+    this.roles = this.authService.getRoles();
     if(this.roles.length == 1){
       this.role = this.roles[0];
       window.sessionStorage.setItem('role',this.role);
@@ -51,8 +51,6 @@ export class MenuComponent {
   }
 
   logout(): void {
-
-    sessionStorage.clear();
     this.authService.logout().subscribe({
       next: res => {
         console.log(res);

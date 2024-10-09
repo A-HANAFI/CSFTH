@@ -2,22 +2,22 @@ import { Role } from "./Role";
 
 export class User {
     public id  : number | undefined ;
-    public username : string | undefined;
-    public email : string | undefined;
-    public password : string | undefined;
-    public role : string[] | undefined ;
+    public username : string ;
+    public email : string ;
+    public password : string ;
+    public roles : string[] ;
     constructor(
         id? : any  ,
        username? : string,
        email? : string,
         password? : string ,
-         role? : string[] ,
+         roles? : string[] ,
     ){
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.roles = roles;
     }
 }
 

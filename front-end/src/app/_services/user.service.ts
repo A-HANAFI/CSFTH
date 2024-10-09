@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, lastValueFrom, map } from 'rxjs';
-import { User } from '../models/User';
+import { User } from '../_models/User';
 import{API_URL} from '../_shared/constants'
 
 const URL = API_URL;

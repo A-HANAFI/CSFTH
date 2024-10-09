@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../models/User';
+import { User } from '../_models/User';
 
 @Component({
   selector: 'app-login',
@@ -15,24 +15,24 @@ export class LoginComponent implements OnInit {
     password: null
   };
 
-  isLoggedIn = false;
   isLoginFailed = false;
+  isLoggedIn : boolean;
   errorMessage = '';
   roles: string[] = [];
   role! : string ;
 
   constructor(
     private authService: AuthService, 
-    private storageService: StorageService,
     private router : Router,
     private route : ActivatedRoute
     ) { }
 
   ngOnInit(): void {
-    if (this.storageService.isLoggedIn()) {
-      this.isLoggedIn = true;
-      this.roles = this.storageService.getUser().roles;
-    }
+
+    // if (this.authService.isUserLoggedIn) {
+    //   this.isLoggedIn = true;
+    //   this.roles = this.authService.getRoles();
+    // }
   }
 
   onSubmit(): void {
@@ -43,15 +43,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(username, password ).subscribe(
       (data) => {
         console.log(data);
-        this.storageService.clean();
-        this.storageService.saveUser(data);
-       sessionStorage.setItem('key',data.token);
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-       // console.log("isLoggedIn " + this.isLoggedIn);
-        this.roles = this.storageService.getUser().roles;
+        
 
-        if (this.isLoggedIn) {
+        if (this.authService.isUserLoggedIn()) {
+          this.isLoggedIn= true;
           this.router.navigate(['home']);
           //window.sessionStorage.setItem('role', this.roles[0]);
           }

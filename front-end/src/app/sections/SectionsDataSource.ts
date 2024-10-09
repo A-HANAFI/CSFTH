@@ -1,7 +1,7 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
-import { Candidat } from "../models/Candidat";
+import { Candidat } from "../_models/Candidat";
 import { BehaviorSubject, Observable, catchError, finalize, of } from "rxjs";
-import { Section } from "../models/Section";
+import { Section } from "../_models/Section";
 import { SectionService } from "../_services/section.service";
 
 

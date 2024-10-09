@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApprenantService } from 'src/app/_services/apprenant.service';
 import { CandidatService } from 'src/app/_services/candidat.service';
-import { Apprenant } from 'src/app/models/Apprenant';
+import { Apprenant } from 'src/app/_models/Apprenant';
 import { ApprenantsDataSource } from './ApprenantsDataSource';
 
 @Component({

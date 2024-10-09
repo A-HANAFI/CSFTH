@@ -1,6 +1,6 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { BehaviorSubject, Observable, catchError, finalize, map, of } from "rxjs";
-import { User } from "../models/User";
+import { User } from "../_models/User";
 import { UserService } from "../_services/user.service";
 
 export class LessonsDataSource implements DataSource<User> {

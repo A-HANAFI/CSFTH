@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Section } from '../models/Section';
+import { Section } from '../_models/Section';
 import { API_URL } from '../_shared/constants';
 
 @Injectable({

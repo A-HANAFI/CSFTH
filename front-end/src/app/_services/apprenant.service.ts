@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApprenantComponent } from '../apprenant/apprenant.component';
 import { HttpClient } from '@angular/common/http';
-import { Apprenant } from '../models/Apprenant';
+import { Apprenant } from '../_models/Apprenant';
 import{API_URL} from '../_shared/constants'
 import { Observable } from 'rxjs';
 
